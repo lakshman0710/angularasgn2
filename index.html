@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ShoppingListApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title >Shopping List Check-off</title>
+</head>
+<style>
+      .result {
+          font-weight: bold;
+          margin-top: 20px;
+          font-size: 18px;
+          color: Red
+      }
+      .buyresult {
+          font-weight: bold;
+          margin-top: 20px;
+          font-size: 18px;
+          color: Green
+      }
+      .tittle
+      {
+        color:Brown
+      }
+      .list
+      {
+        color: #009b77
+      }
+  </style>
+<body ng-controller="ShoppingListController as list">
+
+  <h1 class="tittle">Shopping List Check-off</h1>
+
+  <div>
+    <h2 class="list">To Buy</h2>
+    <p class="buyresult" ng-if="list.toBuyItems.length === 0">Everything is bought!</p>
+    <ul>
+      <li ng-repeat="item in list.toBuyItems">
+        Buy {{item.quantity}} {{item.name}}
+        <button ng-click="list.buyItem($index)">Bought</button>
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <h2 class="list">Already Bought</h2>
+    <p class="result" ng-if="list.boughtItems.length === 0">Nothing bought yet</p>
+    <ul>
+      <li ng-repeat="item in list.boughtItems">
+        Bought {{item.quantity}} {{item.name}}
+      </li>
+    </ul>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
